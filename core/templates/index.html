@@ -1,4 +1,4 @@
-{% load static %}
+{% load static%}
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -50,21 +50,21 @@
     <div class="collapse navbar-collapse order-1 order-lg-0" id="navbarSupportedContent">
       <!-- Navbar menu-->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
-        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">Обо мне</a></li>
+        <li class="nav-item"><a class="nav-link" href="#resume">Резюме</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Портфолио</a></li>
+        <li class="nav-item"><a class="nav-link" href="#blog">Новости</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
       </ul>
     </div>
   </nav>
   <!-- Home-->
-  <section class="home-area element-cover-bg" id="home" style="background-image:url({% static 'img/home.jpg' %})">
+  <section class="home-area element-cover-bg" id="home" style="background-image:url({{infouser.image.url}})">
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center">
         <div class="col-12 col-lg-8 home-content text-center">
-          <h1 class="home-name">Emma <span>Smith</span></h1>
-          <h4 class="cd-headline clip home-headline">I’m a <span class="cd-words-wrapper single-headline"><b class="is-visible">Developer</b><b>Designer</b><b>Freelancer</b></span></h4>
+          <h1 class="home-name">{{infouser.name}}</span></h1>
+          <h4 class="cd-headline clip home-headline">Я <span class="cd-words-wrapper single-headline"><b class="is-visible">{{infouser.work}}</b></span></h4>
         </div>
       </div>
     </div>
@@ -100,8 +100,8 @@
             <div class="row">
               <div class="col-12">
                 <div class="section-heading page-heading">
-                  <p class="section-description">Get to know me</p>
-                  <h2 class="section-title">About Me</h2>
+                  <p class="section-description">Познакомься со мной</p>
+                  <h2 class="section-title">Обо мне</h2>
                   <div class="animated-bar"></div>
                 </div>
               </div>
@@ -110,30 +110,30 @@
             <div class="info-section single-section">
               <div class="row align-items-center">
                 <!-- Picture part-->
-                <div class="col-12 col-lg-5 info-img"><img class="img-fluid img-thumbnail" src="{% static 'img/info-img.jpg' %}" alt="About Picture"></div>
+                <div class="col-12 col-lg-5 info-img"><img class="img-fluid img-thumbnail" src="{{secondary.image.url}}" alt="About Picture"></div>
                 <!-- Content part-->
                 <div class="col-12 col-lg-7 info-content">
                   <div class="content-block">
-                    <h2 class="content-subtitle">Who am i?</h2>
-                    <h6 class="content-title">I'm Emma Smith, a visual UX/UI Designer and Web Developer</h6>
+                    <h2 class="content-subtitle">Кто я?</h2>
+                    <h6 class="content-title">{{secondary.title}}</h6>
                     <div class="content-description">
-                      <p>I am a freelancer based in the United Kingdom and i have been building noteworthy UX/UI designs and websites for years, which comply with the latest design trends. I help convert a vision and an idea into meaningful and useful products. Having a sharp eye for product evolution helps me prioritize tasks, iterate fast and deliver faster.</p>
+                      <p>{{secondary.descriptions}}</p>
                     </div>
                     <address class="content-info">
                       <div class="row">
-                        <div class="col-12 col-md-6 single-info"><span>Name:</span>
-                          <p>Emma Smith</p>
+                        <div class="col-12 col-md-6 single-info"><span>Имя:</span>
+                          <p>{{infouser.name}}</p>
                         </div>
-                        <div class="col-12 col-md-6 single-info"><span>Email:</span>
-                          <p><a href="mailto:emma@example.com">emma@example.com</a></p>
+                        <div class="col-12 col-md-6 single-info"><span>Почта:</span>
+                          <p><a href="mailto:{{infouser.email}}">{{infouser.email}}</a></p>
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-12 col-md-6 single-info"><span>Age:</span>
-                          <p>21</p>
+                        <div class="col-12 col-md-6 single-info"><span>Возраст:</span>
+                          <p>{{infouser.age}}</p>
                         </div>
-                        <div class="col-12 col-md-6 single-info"><span>From:</span>
-                          <p>Liverpool, UK</p>
+                        <div class="col-12 col-md-6 single-info"><span>Откуда:</span>
+                          <p>{{infouser.froms}}</p>
                         </div>
                       </div>
                     </address>
@@ -210,57 +210,29 @@
               <div class="row">
                 <div class="col-12">
                   <div class="section-heading">
-                    <p class="section-description">What my clients think about me</p>
-                    <h2 class="section-title">Testimonials</h2>
+                    <p class="section-description">Что мои клиенты думают обо мне</p>
+                    <h2 class="section-title">Отзывы</h2>
                   </div>
                 </div>
               </div>
               <div class="my-slider">
+                {% for testim in testim %} 
                 <div class="slider-item">
                   <!-- Single review-->
                   <div class="single-review swiper-slide">
                     <div class="review-header d-flex justify-content-between">
                       <div class="review-client">
-                        <div class="media"><img class="img-fluid rounded-circle client-avatar" src="{% static 'img/client-1.jpg' %}" alt="Client">
+                        <div class="media"><img class="img-fluid rounded-circle client-avatar" src="{{testim.image.url}}" alt="Client">
                           <div class="client-details">
-                            <h6 class="client-name">Julia Sakura</h6><span class="client-role">Envato Customer</span>
+                            <h6 class="client-name">{{testim.name}}</h6><span class="client-role">{{testim.work}}</span>
                           </div>
                         </div>
                       </div><i class="icon ion-md-quote review-icon"></i>
                     </div>
-                    <p class="review-content">Emma did an excellent creative job, addressing our request quickly, and also providing her own graphic insight, being open to feedback and changes or edits when they arose. She worked with us the entire way. Highly recommended.</p>
+                    <p class="review-content">{{testim.descriptions}}</p>
                   </div>
                 </div>
-                <div class="slider-item">
-                  <!-- Single review-->
-                  <div class="single-review swiper-slide">
-                    <div class="review-header d-flex justify-content-between">
-                      <div class="review-client">
-                        <div class="media"><img class="img-fluid rounded-circle client-avatar" src="{% static 'img/client-2.jpg' %}" alt="Client">
-                          <div class="client-details">
-                            <h6 class="client-name">John Santana</h6><span class="client-role">Entrepreneur</span>
-                          </div>
-                        </div>
-                      </div><i class="icon ion-md-quote review-icon"></i>
-                    </div>
-                    <p class="review-content">Emma did an excellent creative job, addressing our request quickly, and also providing her own graphic insight, being open to feedback and changes or edits when they arose. She worked with us the entire way. Highly recommended.</p>
-                  </div>
-                </div>
-                <div class="slider-item">
-                  <!-- Single review-->
-                  <div class="single-review swiper-slide">
-                    <div class="review-header d-flex justify-content-between">
-                      <div class="review-client">
-                        <div class="media"><img class="img-fluid rounded-circle client-avatar" src="{% static 'img/client-3.jpg' %}" alt="Client">
-                          <div class="client-details">
-                            <h6 class="client-name">Maria Wilson</h6><span class="client-role">Envato Customer</span>
-                          </div>
-                        </div>
-                      </div><i class="icon ion-md-quote review-icon"></i>
-                    </div>
-                    <p class="review-content">Emma did an excellent creative job, addressing our request quickly, and also providing her own graphic insight, being open to feedback and changes or edits when they arose. She worked with us the entire way. Highly recommended.</p>
-                  </div>
-                </div>
+                {% endfor %}
               </div>
             </div>
             <!-- Pricing section-->
@@ -556,7 +528,7 @@
               <div class="col-12">
                 <div class="section-heading page-heading">
                   <p class="section-description">Check out my latest blog posts</p>
-                  <h2 class="section-title">My Blog</h2>
+                  <h2 class="section-title">Мои нрвости</h2>
                   <div class="animated-bar"></div>
                 </div>
               </div>
@@ -564,65 +536,19 @@
             <!-- Blog section-->
             <div class="blog-section single-section">
               <div class="row justify-content-center">
+                {% for news in news %}
                 <!-- Single post-->
                 <div class="col-12 col-sm-8 col-lg-4">
-                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="{% static 'img/post-1.jpg' %}" alt="Blog post"><span class="content-date">11 Dec, 20</span></a>
-                    <div class="card-body post-content"><a href="#0">
-                        <h5 class="card-title content-title">Top tools for Photographers</h5>
+                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="{{news.image.url}}" alt="Blog post"><span class="content-date">{{news.created_at}}</span></a>
+                    <div class="card-body post-content"><a href="{% url 'news_detail' news.id%}">
+                        <h5 class="card-title content-title">{{news.title}}</h5>
                       </a>
-                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
+                      <p class="card-text content-description">{{news.descriptions|truncatechars:55}}</p>
                     </div>
                   </div>
                 </div>
                 <!-- Single post-->
-                <div class="col-12 col-sm-8 col-lg-4">
-                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="{% static 'img/post-2.jpg' %}" alt="Blog post"><span class="content-date">12 Aug, 20</span></a>
-                    <div class="card-body post-content"><a href="#0">
-                        <h5 class="card-title content-title">Take a tour of my office</h5>
-                      </a>
-                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Single post-->
-                <div class="col-12 col-sm-8 col-lg-4">
-                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="{% static 'img/post-3.jpg' %}" alt="Blog post"><span class="content-date">4 Feb, 20</span></a>
-                    <div class="card-body post-content"><a href="#0">
-                        <h5 class="card-title content-title">How i became a Web Designer</h5>
-                      </a>
-                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
-                    </div>
-                  </div>
-                </div><!-- Single post-->
-                <div class="col-12 col-sm-8 col-lg-4">
-                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="{% static 'img/post-4.jpg' %}" alt="Blog post"><span class="content-date">11 Dec, 19</span></a>
-                    <div class="card-body post-content"><a href="#0">
-                        <h5 class="card-title content-title">How to improve work performance</h5>
-                      </a>
-                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Single post-->
-                <div class="col-12 col-sm-8 col-lg-4">
-                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="{% static 'img/post-5.jpg' %}" alt="Blog post"><span class="content-date">15 Nov, 19</span></a>
-                    <div class="card-body post-content"><a href="#0">
-                        <h5 class="card-title content-title">How to work from home</h5>
-                      </a>
-                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Single post-->
-                <div class="col-12 col-sm-8 col-lg-4">
-                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="{% static 'img/post-6.jpg' %}" alt="Blog post"><span class="content-date">8 Aug, 19</span></a>
-                    <div class="card-body post-content"><a href="#0">
-                        <h5 class="card-title content-title">How to enjoy your business trip</h5>
-                      </a>
-                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
-                    </div>
-                  </div>
-                </div>
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -675,28 +601,28 @@
                       <li>
                         <div class="media align-items-center"><span class="info-icon"><i class="icon ion-logo-ionic"></i></span>
                           <div class="media-body info-details">
-                            <h6 class="info-type">Name</h6><span class="info-value">Emma Smith</span>
+                            <h6 class="info-type">Имя</h6><span class="info-value">{{infouser.name}}</span>
                           </div>
                         </div>
                       </li>
                       <li>
                         <div class="media align-items-center"><span class="info-icon"><i class="icon ion-md-map"></i></span>
                           <div class="media-body info-details">
-                            <h6 class="info-type">Location</h6><span class="info-value">4155 Mann Island, Liverpool, United Kingdom.</span>
+                            <h6 class="info-type">Адрес</h6><span class="info-value">{{infouser.locate}}</span>
                           </div>
                         </div>
                       </li>
                       <li>
                         <div class="media align-items-center"><span class="info-icon"><i class="icon ion-md-call"></i></span>
                           <div class="media-body info-details">
-                            <h6 class="info-type">Call Me</h6><span class="info-value"><a href="tel:+441632967704">+44 1632 967704</a></span>
+                            <h6 class="info-type">Телефонный номер</h6><span class="info-value"><a href="tel:+{{infouser.phone}}">+{{infouser.phone}}</a></span>
                           </div>
                         </div>
                       </li>
                       <li>
                         <div class="media align-items-center"><span class="info-icon"><i class="icon ion-md-send"></i></span>
                           <div class="media-body info-details">
-                            <h6 class="info-type">Email Me</h6><span class="info-value"><a href="mailto:emma@example.com">emma@example.com</a></span>
+                            <h6 class="info-type">Почта</h6><span class="info-value"><a href="mailto:{{infouser.email}}">{{infouser.email}}</a></span>
                           </div>
                         </div>
                       </li>
@@ -748,6 +674,7 @@
   </div>
   <!-- endremoveIf(customizerDist)-->
   <!-- Scripts-->
+  
   <script src="{% static 'js/jquery.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
